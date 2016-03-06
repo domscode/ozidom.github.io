@@ -9,6 +9,7 @@ var Game = {
     door: null,
     song: null,
     level: 0,
+    answer: null,
 
     init: function () {
 
@@ -24,44 +25,26 @@ var Game = {
         
         
         this.display.clear();
-        var str = "WTHI IS ASdASDASDA" +
-        "<a href='http://domscode.com'>Click Here</a><br/>" +
-        "ASDASDASDASDASDASDASDASDASD<br/>SDASDASDASDASDASDASDASASDASDASD" +
-         "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-          "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-           "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-            "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-             "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-              "ASDASDASDASDASDASDASDASDASD<br/>SDASDASDASDASDASDASDASASDASDASD" +
-         "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-          "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-           "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-            "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-             "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-              "ASDASDASDASDASDASDASDASDASD<br/>SDASDASDASDASDASDASDASASDASDASD" +
-         "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-          "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-           "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-            "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-             "ASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASDASASDASDASD<br/>" +
-        "<a href='http://domscode.com' target='web'>Click Here</a><iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/177159515&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>";
-       
-        var filePath = "song.txt";
 
-
-
-       
-        //this.display.drawText(60,  2, str);
-
-        
-        //document.body.appendChild(this.display.getContainer());
         this._generateMap();
 
         var string = this.song.getSong();
 
-        $("#gameText").html(string);
+        $("#gameText").html(string+"<input id='val'></input");
         $("#gameText" ).dialog({
             autoOpen: true,
+            buttons: [
+                {
+                    text: "Solve",
+                    click: function() {
+                         //do something
+                         var modalAnswer = $("#val").val();
+                         Game.answer = modalAnswer;
+
+                         $( this ).dialog( "close" );
+                    }
+                }
+            ],
             width: 630,
             position: { my: 'top', at: 'top+150' },
             modal: true,

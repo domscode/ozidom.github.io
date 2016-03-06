@@ -59,7 +59,8 @@ Player.prototype._checkBox = function () {
     console.log(Game.map[key]); 
     if (Game.map[key] != "*" && Game.map[key] != "i" ) {
         alert("There is no box here!");
-    } else if (key == Game.door) {
+    } else if (key == Game.door && Game.song.getAnswer()==Game.answer) {
+
         Game.level++;
         alert('You are going to level : ' + Game.level)
         Game.init();
@@ -75,7 +76,12 @@ Player.prototype._checkBox = function () {
     } else if (key == "i")
     {
         alert("item");
-    }       else {
+    }  
+    else if (Game.song.getAnswer()!=Game.answer) 
+    {
+         alert("Answer is wrong");
+    }
+    else {
         alert("This box is empty :-(");
     }
 }
