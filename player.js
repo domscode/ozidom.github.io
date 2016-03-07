@@ -50,14 +50,14 @@ Player.prototype.handleEvent = function (e) {
 }
 
 Player.prototype._draw = function () {
-    Game.display.draw(this._x, this._y, "@", "#ff0");
+    Game.display.draw(this._x, this._y, "@", "green");
 }
 
 Player.prototype._checkBox = function () {
     //console.log(Game.map[key]); 
     var key = this._x + "," + this._y;
     console.log(Game.map[key]); 
-    if (Game.map[key] != "*" && Game.map[key] != "i" ) {
+    if (Game.map[key] != "d" && Game.map[key] != "i" ) {
         alert("There is no box here!");
     } else if (key == Game.door && Game.song.getAnswer()==Game.answer) {
 

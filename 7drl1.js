@@ -30,7 +30,7 @@ var Game = {
 
         var string = this.song.getSong();
 
-        $("#gameText").html(string+"<input id='val'></input");
+        $("#gameText").html(string+"Answer:<input id='val'></input");
         $("#gameText" ).dialog({
             autoOpen: true,
             buttons: [
@@ -84,7 +84,7 @@ var Game = {
 
         digger.create(digCallback.bind(this));
 
-        this._generateBoxes(freeCells);
+        this._generateDoor(freeCells);
         this._drawWholeMap();
 
         this.player = this._createBeing(Player, freeCells);
@@ -114,17 +114,15 @@ var Game = {
         return new what(x, y);
     },
 
-    _generateBoxes: function (freeCells) {
-        for (var i = 0; i < 2 * Game.level; i++) {
+    _generateDoor: function (freeCells) {
             var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
             var key = freeCells.splice(index, 1)[0];
             var parts = key.split(",");
             var x = parseInt(parts[0]);
             var y = parseInt(parts[1]);
 
-            this.map[key] = "*";
-            if (!i) { this.door = key; } //its the door
-        }
+            this.map[key] = "d";
+            this.door = key; //its the doo
     },
 
     _drawWholeMap: function () {
