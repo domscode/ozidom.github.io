@@ -59,19 +59,33 @@ Player.prototype._checkBox = function () {
     console.log(Game.map[key]); 
     if (Game.map[key] != "d" && Game.map[key] != "i" ) {
         alert("There is no box here!");
-    } else if (key == Game.door && Game.song.getAnswer()==Game.answer) {
+    } 
+    else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
 
-        Game.level++;
-        alert('You are going to level : ' + Game.level)
-        Game.init();
+        var string = Game.song.getSong();
 
-        if (this.level==5)
-        {
-            alert("Hooray! You found an door and won this game.");
-            //Game.engine.lock();
-        }
-        
-        Game.engine.lock();
+        $("#gameText").html(string+"Answer:<input id='val'></input");
+        $("#gameText" ).dialog({
+            autoOpen: true,
+            buttons: [
+                {
+                    text: "Solve",
+                    click: function() {
+                         //do something
+                         var modalAnswer = $("#val").val();
+                         Game.answer = modalAnswer;
+
+                         $( this ).dialog( "close" );
+                         callBack(0)
+                    }
+                }
+            ],
+            width: 630,
+            position: { my: 'top', at: 'top+150' },
+            modal: true,
+            resizable: false,
+            closeOnEscape: false
+        });
         //window.removeEventListener("keydown", this);
     } else if (key == "i")
     {
@@ -84,4 +98,23 @@ Player.prototype._checkBox = function () {
     else {
         alert("This box is empty :-(");
     }
+}
+function callBack(value){
+    alert('hey');
+    var answer = Game.song.getAnswer();
+    alert(answer);
+    alert(Game.answer);
+    if (answer.trim() === Game.answer.trim() ) 
+        {
+            Game.level++;
+            alert('You are going to level : ' + Game.level);
+            Game.init();
+        }
+        if (this.level==5)
+        {
+            alert("Hooray! You found an door and won this game.");
+            //Game.engine.lock();
+        }
+        
+        Game.engine.lock();
 }

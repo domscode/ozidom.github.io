@@ -26,33 +26,7 @@ var Game = {
         
         this.display.clear();
 
-        this._generateMap();
-
-        var string = this.song.getSong();
-
-        $("#gameText").html(string+"Answer:<input id='val'></input");
-        $("#gameText" ).dialog({
-            autoOpen: true,
-            buttons: [
-                {
-                    text: "Solve",
-                    click: function() {
-                         //do something
-                         var modalAnswer = $("#val").val();
-                         Game.answer = modalAnswer;
-
-                         $( this ).dialog( "close" );
-                    }
-                }
-            ],
-            width: 630,
-            position: { my: 'top', at: 'top+150' },
-            modal: true,
-            resizable: false,
-            closeOnEscape: false
-        });
-
-        
+        this._generateMap();   
 
         var scheduler = new ROT.Scheduler.Simple();
         scheduler.add(this.player, true);
