@@ -2,18 +2,40 @@ var song = function (level) {
     this._level = level;
 }
 
-song.prototype.getAnswer = function () {
-    //alert("Song Level" + level);
+song.prototype.getAnswer = function (level) {
+    var riddle;
+    switch(level) {
+    case 1:
+		    riddle = "how";
+        	break;
+    case 2:
+        	riddle = "king";
+        	break;
+    default:
+        	riddle = "";	
+    }
 
     //var SongTextHTML = "<div style='font-size:small;'>asdasdasd</br>asdasdasdasdasdasddsa<br/>asdasdasdasasdads<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/177159515&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>";
-    return "how";
+    return riddle;
 }
 
 //TODO:swicth level 
-song.prototype.getSong = function () {
- 	var SongTextHTML = "<div style='font-size:small;font-family:courier;'>Open t<b>h</b>e door<br/>and look in<br/>and walk around<br/>you found<br/><br/>Walking ahead<br/>turning left<br/>see what you can find<br/>Remind<br/><br/>Open the door<br/>to my heart and you<br/><br/>will rise<br/>slowly<br/><br/>"+
-	"Open the door<br/>to my heart and<br/>you will rise<br/>slowly<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>"+
-    "<br><b> Riddle: </b>asking the question, on the first line, at the middle of the middle";
+song.prototype.getSong = function (level) {
+	var SongTextHTML;
+	switch(level) {
+    case 1:
+		    SongTextHTML = "<div style='font-size:small;font-family:courier;'>Open t<b>h</b>e door<br/>and look in<br/>and walk around<br/>you found<br/><br/>Walking ahead<br/>turning left<br/>see what you can find<br/>Remind<br/><br/>Open the door<br/>to my heart and you<br/><br/>will rise<br/>slowly<br/><br/>"+
+			"Open the door<br/>to my heart and<br/>you will rise<br/>slowly<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>"+
+		    "<br><b> Riddle: </b>asking the question, on the first line, at the middle of the middle";
+        break;
+    case 2:
+        	SongTextHTML = "<div style='font-size:small;font-family:courier;'>Open the door<br/>and look in<br/>and wal<b>k</b> around<br/>you found<br/><br/>Walking ahead<br/>turning left<br/>see what you can find<br/>Remind<br/><br/>Open the door<br/>to my heart and you<br/><br/>will rise<br/>slowly<br/><br/>"+
+			"Open the door<br/>to my heart and<br/>you will rise<br/>slowly<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>"+
+		    "<br><b> Riddle: </b>On the last step of the walk the Monarch begins";
+        break;
+    default:
+        	SongTextHTML = "";
+	}
     return SongTextHTML;
 }
 

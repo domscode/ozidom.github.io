@@ -56,13 +56,13 @@ Player.prototype._draw = function () {
 Player.prototype._checkBox = function () {
     //console.log(Game.map[key]); 
     var key = this._x + "," + this._y;
-    console.log(Game.map[key]); 
+    //console.log(Game.map[key]); 
     if (Game.map[key] != "d" && Game.map[key] != "i" ) {
         alert("There is no box here!");
     } 
     else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
 
-        var string = Game.song.getSong();
+        var string = Game.song.getSong(Game.level);
 
         $("#gameText").html(string+"Answer:<input id='val'></input");
         $("#gameText" ).dialog({
@@ -76,7 +76,7 @@ Player.prototype._checkBox = function () {
                          Game.answer = modalAnswer;
 
                          $( this ).dialog( "close" );
-                         callBack(0)
+                         callBack(modalAnswer)
                     }
                 }
             ],
@@ -91,7 +91,7 @@ Player.prototype._checkBox = function () {
     {
         alert("item");
     }  
-    else if (Game.song.getAnswer()!=Game.answer) 
+    else if (Game.song.getAnswer(Game.level)!=Game.answer) 
     {
          alert("Answer is wrong");
     }
@@ -100,20 +100,21 @@ Player.prototype._checkBox = function () {
     }
 }
 function callBack(value){
-    alert('hey');
-    var answer = Game.song.getAnswer();
-    alert(answer);
-    alert(Game.answer);
+    var answer = value
+    //alert(answer);
+    //alert(Game.answer);
     if (answer.trim() === Game.answer.trim() ) 
         {
             Game.level++;
-            alert('You are going to level : ' + Game.level);
-            Game.init();
+           // alert('You are going to level : ' + Game.level);
+            //this.Player = null;
+            Game.engine.lock();
+            Game._startLevel();
         }
         if (this.level==5)
         {
-            alert("Hooray! You found an door and won this game.");
-            //Game.engine.lock();
+            alert("Hooray! You found the final door and won this game.");
+            Game.engine.lock();
         }
         
         Game.engine.lock();
