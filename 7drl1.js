@@ -19,13 +19,13 @@ var Game = {
             
             this.display = new ROT.Display({ spacing: 1.1 });
 
-            this.display.clear();
+            
             var ab = $("#gameDisplay")[0];
             ab.appendChild(this.display.getContainer());
             this.level = 1;
         }
 
-        
+        //this.display.clear();
         //this.player = null;
         //this.display = null;
 
@@ -45,7 +45,7 @@ var Game = {
     _startLevel: function () {
         this.map = {};
         
-        //this.display.clear();
+        this.display.clear();
 
         this._generateMap();   
        

@@ -23,7 +23,7 @@ Monster.prototype.act = function () {
 
     path.shift();
     if (path.length == 1) {
-        //Game.engine.lock();
+        Game.engine.lock();
         alert("Game over - you were captured !!");
     } else {
         x = path[0][0];
