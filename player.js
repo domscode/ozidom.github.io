@@ -63,6 +63,7 @@ Player.prototype._checkBox = function () {
     else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
 
         var string = Game.song.getSong(Game.level);
+        
 
         $("#gameText").html(string+"Answer:<input id='val'></input");
         $("#gameText" ).dialog({
@@ -73,8 +74,9 @@ Player.prototype._checkBox = function () {
                     click: function() {
                          //do something
                          var modalAnswer = $("#val").val();
-                         Game.answer = modalAnswer;
-
+                         //Game.answer = modalAnswer;
+                         var answer = Game.song.getAnswer(Game.level);
+                         Game.answer = answer;
                          $( this ).dialog( "close" );
                          callBack(modalAnswer)
                     }
