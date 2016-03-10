@@ -38,8 +38,11 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        
+        $("#gameSubText").text("The game begins...");
+
         this._startLevel();
+
+
     },
 
     _startLevel: function () {
