@@ -140,7 +140,7 @@ function callBack(value){
         }
         else if (answer.trim() === Game.answer.trim() && Game.level==3)
         {
-            $("#gameSubText").text("Hooray! You found the final door and won this game.");
+            $("#gameSubText").text("Hooray! You found the final door and won this game. Refresh the browser to restart");
             Game.isGameOver = true;
             Game.engine.lock();
         }
