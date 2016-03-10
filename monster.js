@@ -25,6 +25,7 @@ Monster.prototype.act = function () {
     if (path.length <= 1) {
         Game.engine.lock();
          $("#gameSubText").text("You've been captured the game is over - Refresh your browser to restart");
+         Game.isGameOver = true;
     } else {
         x = path[0][0];
         y = path[0][1];

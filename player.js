@@ -15,6 +15,10 @@ Player.prototype.act = function () {
 
 Player.prototype.handleEvent = function (e) {
     console.log('KD');
+    if (Game.isGameOver)
+    {
+        return;
+    }
     var code = e.keyCode;
     if (code == 13 || code == 32) {
         this._checkBox();
@@ -49,6 +53,7 @@ Player.prototype.handleEvent = function (e) {
     else if (tile == "P")
     {
         $("#gameSubText").text("You've been captured, game over, refresh the browser to begin");
+        Game.isGameOver = true;
         Game.engine.lock();
     }
     else
@@ -76,11 +81,6 @@ Player.prototype._checkBox = function () {
     if (Game.map[key] != "d" && Game.map[key] != "i" ) {
         alert("There is no box here!");
     } 
-    else if (Game.map[key] == "d")
-    {
-        alert("You've been captured, game over, refresh the browser to begin");
-        Game.engine.lock();
-    }
     else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
         $("#gameText").show();
         var string = Game.song.getSong(Game.level);
@@ -129,9 +129,7 @@ Player.prototype._checkBox = function () {
 }
 function callBack(value){
     var answer = value
-    //alert(answer);
-    //alert(Game.answer);
-    if (answer.trim() === Game.answer.trim() && this.level<3 ) 
+    if (answer.trim() === Game.answer.trim() && Game.level<3 ) 
         {
             Game.level++;
            // alert('You are going to level : ' + Game.level);o
@@ -140,9 +138,10 @@ function callBack(value){
             Game.engine.lock();
             Game._startLevel();
         }
-        else if (answer.trim() === Game.answer.trim()  && this.level==3)
+        else if (answer.trim() === Game.answer.trim() && Game.level==3)
         {
-            alert("Hooray! You found the final door and won this game.");
+            $("#gameSubText").text("Hooray! You found the final door and won this game.");
+            Game.isGameOver = true;
             Game.engine.lock();
         }
         else 

@@ -10,6 +10,7 @@ var Game = {
     song: null,
     level: 0,
     answer: null,
+    isGameOver : false,
 
     init: function () {
 
