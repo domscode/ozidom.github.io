@@ -22,9 +22,9 @@ Monster.prototype.act = function () {
     astar.compute(this._x, this._y, pathCallback);
 
     path.shift();
-    if (path.length == 1) {
+    if (path.length <= 1) {
         Game.engine.lock();
-        alert("Game over - you were captured !!");
+         $("#gameSubText").text("You've been captured the game is over - Refresh your browser to restart");
     } else {
         x = path[0][0];
         y = path[0][1];
