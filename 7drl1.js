@@ -44,7 +44,7 @@ var Game = {
 
     _startLevel: function () {
         this.map = {};
-        
+        $("#gameText").toggle();
         this.display.clear();
 
         this._generateMap();   

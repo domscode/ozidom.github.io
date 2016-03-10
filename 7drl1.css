@@ -49,3 +49,15 @@
 .close:hover {
     background: #00d9ff;
 }
+
+.background
+{
+       background: black;  
+}
+
+.subText
+{
+    color: white;
+    font-family: Courier;
+    text-align: center;
+}

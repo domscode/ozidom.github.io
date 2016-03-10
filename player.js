@@ -46,6 +46,10 @@ Player.prototype.handleEvent = function (e) {
     {
         $("#gameSubText").text("Item found");
     }
+    else
+    {
+        $("#gameSubText").text("Walking...");
+    }
 
     Game.display.draw(this._x, this._y, Game.map[this._x + "," + this._y]);
     this._x = newX;
@@ -68,7 +72,7 @@ Player.prototype._checkBox = function () {
         alert("There is no box here!");
     } 
     else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
-
+        $("#gameText").show();
         var string = Game.song.getSong(Game.level);
         
 
@@ -120,7 +124,8 @@ function callBack(value){
     if (answer.trim() === Game.answer.trim() ) 
         {
             Game.level++;
-           // alert('You are going to level : ' + Game.level);
+           // alert('You are going to level : ' + Game.level);o
+            $("#gameText").toggle();
             //this.Player = null;
             Game.engine.lock();
             Game._startLevel();
@@ -134,6 +139,6 @@ function callBack(value){
             alert("Hooray! You found the final door and won this game.");
             Game.engine.lock();
         }
-        
+        $("#gameText").toggle();
         Game.engine.lock();
 }
