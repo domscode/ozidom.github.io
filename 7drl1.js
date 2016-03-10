@@ -54,12 +54,13 @@ var Game = {
         scheduler.add(this.monster, true);
 
         Game.items = [];
-        for (var i = 0; i <5;i++) {
+       /* for (var i = 0; i <5;i++) {
             //var itemInstance = this._createBeing(Item, freeCells);
             //var itemInstance = new Item();
             var itemInstance = Game.items[i];
             scheduler.add(itemInstance, true);
-        }
+            this.map[Game.items[i]] = "i";
+        }*/
 
         this.engine = new ROT.Engine(scheduler);
         this.engine.start();
@@ -79,8 +80,8 @@ var Game = {
         digger.create(digCallback.bind(this));
 
         this._generateDoor(freeCells);
-
-        console.log("creating player");
+        for (var i = 0; i <5;i++) {
+            this._generateItem(freeCells,i);
        ;
 
         this._drawWholeMap();
@@ -93,16 +94,7 @@ var Game = {
         this.monster = this._createBeing(Monster, freeCells,null);
         this.song = new song(this.level);
 
-        for (var i = 0; i <5;i++) {
-            //v = new Item();
-            //console.log(itemInstance);
-            //var key = x + "," + y;
-            //this.map[key] = "i";
-            var itemInstance = this._createBeing(Item, freeCells,null);
-            var key = itemInstance.x + "," + itemInstance.y;
-            this.map[key] = "i";
-            Game.items.push(key);
-            freeCells.push(key);
+       
             //scheduler.add(this.itemInstance, true);
         }
     },
@@ -133,7 +125,16 @@ var Game = {
             this.map[key] = "d";
             this.door = key; //its the doo
     },
+    _generateItem: function (freeCells,i) {
+            var index = Math.floor(ROT.RNG.getUniform() * freeCells.length);
+            var key = freeCells.splice(index, 1)[0];
+            var parts = key.split(",");
+            var x = parseInt(parts[0]);
+            var y = parseInt(parts[1]);
 
+            this.map[key] = "i";
+            this.items[i] = key; //its the doo
+    },
     _drawWholeMap: function () {
         for (var key in this.map) {
             var parts = key.split(",");

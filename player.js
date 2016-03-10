@@ -41,6 +41,12 @@ Player.prototype.handleEvent = function (e) {
     var newKey = newX + "," + newY;
     if (!(newKey in Game.map)) { return; }
 
+    var tile = Game.map[newKey];
+    if (tile == "i")
+    {
+        $("#gameSubText").text("Item found");
+    }
+
     Game.display.draw(this._x, this._y, Game.map[this._x + "," + this._y]);
     this._x = newX;
     this._y = newY;
@@ -56,6 +62,7 @@ Player.prototype._draw = function () {
 Player.prototype._checkBox = function () {
     //console.log(Game.map[key]); 
     var key = this._x + "," + this._y;
+    var element = Game.map[key] 
     //console.log(Game.map[key]); 
     if (Game.map[key] != "d" && Game.map[key] != "i" ) {
         alert("There is no box here!");
@@ -89,16 +96,21 @@ Player.prototype._checkBox = function () {
             closeOnEscape: false
         });
         //window.removeEventListener("keydown", this);
-    } else if (key == "i")
+    } else if (Game.map[key] == "i")
     {
-        alert("item");
+        Game.engine.lock();
+        $("#gameSubText").text("Item picked up");
+        
+        Game.map[key] = ".";
+        Game.engine.unlock();
+
     }  
     else if (Game.song.getAnswer(Game.level)!=Game.answer) 
     {
-         alert("Answer is wrong");
+         $("#gameSubText").text("Answer is wrong");
     }
     else {
-        alert("This box is empty :-(");
+        $("#gameSubText").text("This box is empty :-(");
     }
 }
 function callBack(value){
@@ -112,6 +124,10 @@ function callBack(value){
             //this.Player = null;
             Game.engine.lock();
             Game._startLevel();
+        }
+        else 
+        {
+             $("#gameSubText").text("Answer is wrong");
         }
         if (this.level==5)
         {
