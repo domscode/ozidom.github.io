@@ -70,7 +70,7 @@ Player.prototype.handleEvent = function (e) {
 }
 
 Player.prototype._draw = function () {
-    Game.display.draw(this._x, this._y, "@", "green");
+    Game.display.draw(this._x, this._y, "@", "yellow");
 }
 
 Player.prototype._checkBox = function () {
@@ -134,7 +134,7 @@ function callBack(value){
             Game.level++;
            // alert('You are going to level : ' + Game.level);o
             $("#gameText").toggle();
-            //this.Player = null;
+            $("#gameSubText").text("Welcome to level " + Game.level);
             Game.engine.lock();
             Game._startLevel();
         }

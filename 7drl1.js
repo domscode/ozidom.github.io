@@ -5,12 +5,15 @@ var Game = {
     engine: null,
     player: null,
     monster: null,
+    monster2: null,
+    monster3: null,
     items: [],
     door: null,
     song: null,
     level: 0,
     answer: null,
     isGameOver : false,
+    monsters : [],
 
     init: function () {
 
@@ -39,7 +42,7 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameSubText").text("The game begins...");
+        $("#gameSubText").text("The game begins...Open doors by solving riddles/songs. Open the door on the 3rd lv to win");
 
         this._startLevel();
 
@@ -56,7 +59,10 @@ var Game = {
         var scheduler = new ROT.Scheduler.Simple();
         scheduler.add(this.player, true);
         scheduler.add(this.monster, true);
-
+        if (Game.level > 1)
+            scheduler.add(this.monster2, true);
+        if (Game.level > 2)
+            scheduler.add(this.monster3, true);
         Game.items = [];
        /* for (var i = 0; i <5;i++) {
             //var itemInstance = this._createBeing(Item, freeCells);
@@ -86,16 +92,21 @@ var Game = {
         this._generateDoor(freeCells);
         for (var i = 0; i <5;i++) {
             this._generateItem(freeCells,i);
-       ;
+       
 
         this._drawWholeMap();
-        //if (this.player == null)
-        //{
-            
-        //}
         
-        this.player = this._createBeing(Player, freeCells,this.player)
+        this.player = this._createBeing(Player, freeCells,this.player);
+        //for (var i = 0; i <3;i++) {
         this.monster = this._createBeing(Monster, freeCells,null);
+
+        if (Game.level > 1)
+            this.monster2 = this._createBeing(Monster, freeCells,null);
+
+        if (Game.level > 2)
+            this.monster3= this._createBeing(Monster, freeCells,null);
+        //}
+
         this.song = new song(this.level);
 
        
