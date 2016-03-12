@@ -14,6 +14,9 @@ var Game = {
     answer: null,
     isGameOver : false,
     monsters : [],
+    itemCount : 0,
+    levelItemCount : 0,
+    levelGuesses:0,
 
     init: function () {
 
@@ -42,7 +45,9 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameSubText").text("The game begins...Open doors by solving riddles/songs. Open the door on the 3rd lv to win");
+        $("#gameIntroText").html("The game begins<br/>Open doors by solving riddles/songs<br/>. Open the door on the 3rd lv to win"+
+                                "<br>Bards long ago created the dungeon<br>Doors to lower levels are locked and can only be <br>opened"+
+                                "by unlocking the riddle.<br>look for letters in bold and find a word from <br>the text where the bold item begins");
 
         this._startLevel();
 
@@ -52,8 +57,9 @@ var Game = {
     _startLevel: function () {
         this.map = {};
         $("#gameText").toggle();
+        levelGuesses = 0;
         this.display.clear();
-
+        this.levelItemCount = 0;
         this._generateMap();   
        
         var scheduler = new ROT.Scheduler.Simple();
@@ -170,7 +176,7 @@ var Item = function (x,y) {
 }
 
 Item.prototype._draw = function () {
-    Game.display.draw(this._x, this._y, "i", "#ff0");
+    Game.display.draw(this._x, this._y, "i", "yellow");
 }
 
 $(document).ready(function(e) {   

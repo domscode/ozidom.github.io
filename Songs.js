@@ -33,23 +33,23 @@ song.prototype.getSong = function (level) {
         break;
     case 2:
         	SongTextHTML = 
-			"cut from the days and the lights<br/>" + 
+			"<div style='font-size:small;font-family:courier;'>cut from the days and the lights<br/>" + 
 			"didn't see what came over<br/>" + 
 			"was no feeling up there<br/>" + 
 			"there was something seeping<br/>" + 
 			"deep underground<br/>" + 
-			"think i heard you weeping<br/>" + 
+			"think i heard you <b>w</b>eeping<br/>" + 
 			"faded by the memory of light<br/>" + 
 			"taken by the memory of night<br/>" + 
 			"but the light that shines <br/>" + 
 			"shines above you<br/>" + 
 			"and the light that shines<br/> " + 
 			"shines above you<br/>" + 
-			"deep underground<br/><br><b> Riddle: </b>before the tears";
+			"deep underground<br/><br><b> Riddle: </b>before the tears</div>";
         break;
      case 3:
         	SongTextHTML = 
-			"I'm doing time<br/>" + 
+			"<div style='font-size:small;font-family:courier;'>I'm doing time<br/>" + 
 			"paid the price<br/>" + 
 			"with out hope or even sight<br/>" + 
 			"and i know, i know<br/>" + 
@@ -58,13 +58,13 @@ song.prototype.getSong = function (level) {
 			"caught in the mine<br/>" + 
 			"down too far<br/>" + 
 			"can not make it any more<br/>" + 
-			"and i know, i know<br/>" + 
+			"and i know, i kno<b>w</b><br/>" + 
 			"that i feel for you<br/>" + 
 			"<br/>" + 
 			"What can I do<br/>" +  
 			"What can I say <br/>" + 
 			"What can I do<br/>" + 
-			"to undo<br/><br><b> Riddle: </b>the last time you know, find the last, then head north along the edge, till you reach the mine" 
+			"to undo<br/><br><b> Riddle: </b>the last time you know, find the last, then head north along the edge, till you reach the mine</div>" 
         break;
     default:
         	SongTextHTML = "";

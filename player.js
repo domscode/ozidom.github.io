@@ -15,6 +15,7 @@ Player.prototype.act = function () {
 
 Player.prototype.handleEvent = function (e) {
     console.log('KD');
+    $("#gameIntroText").text('');
     if (Game.isGameOver)
     {
         return;
@@ -123,7 +124,8 @@ Player.prototype._checkBox = function () {
     {
         Game.engine.lock();
         $("#gameSubText").text("Item picked up");
-        
+        Game.itemCount ++;
+        Game.levelItemCount++;
         Game.map[key] = ".";
         Game.engine.unlock();
 
@@ -152,9 +154,9 @@ function callBack(value){
     if (answer.trim() === Game.answer.trim() && Game.level<3 ) 
         {
             Game.level++;
-           // alert('You are going to level : ' + Game.level);o
+            levelGuesses++;
             $("#gameText").toggle();
-            $("#gameSubText").text("Welcome to level " + Game.level);
+            $("#gameSubText").text("Welcome to level " + Game.level + "total Item Count " + Game.levelItemCount);
             Game.engine.lock();
             Game._startLevel();
         }
@@ -166,7 +168,14 @@ function callBack(value){
         }
         else 
         {
+            levelGuesses++;
              $("#gameSubText").text("Answer is wrong");
+             if (levelGuesses>2)
+             {
+                $("#gameSubText").text("Game is over - you used all 3 guesses");
+                Game.isGameOver = true;
+                Game.engine.lock();
+             }
         }
         
         $("#gameText").toggle();

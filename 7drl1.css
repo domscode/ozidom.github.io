@@ -61,3 +61,12 @@
     font-family: Courier;
     text-align: center;
 }
+
+.introText
+{
+    color: white;
+    font-family: Courier;
+    text-align: center;
+    word-wrap:normal;
+    width: 50%;
+}
