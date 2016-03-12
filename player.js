@@ -86,12 +86,19 @@ Player.prototype._checkBox = function () {
         var string = Game.song.getSong(Game.level);
         
 
-        $("#gameText").html(string+"Answer:<input id='val'></input");
+        $("#gameText").html(string+"Answer:<input id='val'></input>(click the Solve button)");
         $("#gameText" ).dialog({
             autoOpen: true,
+            open: function () {
+                $(document).keypress(function(e) {
+                    if (e.keyCode == $.ui.keyCode.ENTER) {
+                         $('#btnSolve').click();
+                    }})
+            },
             buttons: [
                 {
                     text: "Solve",
+                    id: "btnSolve",
                     click: function() {
                          //do something
                          var modalAnswer = $("#val").val();
@@ -109,6 +116,8 @@ Player.prototype._checkBox = function () {
             resizable: false,
             closeOnEscape: false
         });
+
+        
         //window.removeEventListener("keydown", this);
     } else if (Game.map[key] == "i")
     {
@@ -127,6 +136,17 @@ Player.prototype._checkBox = function () {
         $("#gameSubText").text("This box is empty :-(");
     }
 }
+function EnterEvent(e) {
+        if (e.keyCode == 13) {
+           var modalAnswer = $("#val").val();
+                         //Game.answer = modalAnswer;
+                         var answer = Game.song.getAnswer(Game.level);
+                         Game.answer = answer;
+                         $( this ).dialog( "close" );
+                         callBack(modalAnswer);
+        }
+    }
+
 function callBack(value){
     var answer = value
     if (answer.trim() === Game.answer.trim() && Game.level<3 ) 
