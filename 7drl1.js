@@ -45,9 +45,14 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameIntroText").html("The game begins<br/>Open doors by solving riddles/songs<br/>. Open the door on the 3rd lv to win"+
-                                "<br>Bards long ago created the dungeon<br>Doors to lower levels are locked and can only be <br>opened"+
-                                "by unlocking the riddle.<br>look for letters in bold and find a word from <br>the text where the bold item begins");
+        $("#gameIntroText").html("<br>Bards long ago created this dungeon<br>"+
+                                "Open doors by solving riddles/songs - open the door on lv3 to win<br/>."+
+                                "Avoid the monsters who will chase you<br>"+
+                                "<br>"+
+                                "<b>Solve the riddles by looking for letters in bold and"+
+                                 "find a word (sometimes hidden) from hint letter<br>"+
+                                "<br>Beware you only have 3 guesses<br>"+
+                                "<br>Controls:Arrow Keys move and Spacebar for do something");
 
         this._startLevel();
 
@@ -143,7 +148,7 @@ var Game = {
             var x = parseInt(parts[0]);
             var y = parseInt(parts[1]);
 
-            this.map[key] = "d";
+            this.map[key] = ">";
             this.door = key; //its the doo
     },
     _generateItem: function (freeCells,i) {
@@ -153,7 +158,7 @@ var Game = {
             var x = parseInt(parts[0]);
             var y = parseInt(parts[1]);
 
-            this.map[key] = "i";
+            this.map[key] = "$";
             this.items[i] = key; //its the doo
     },
     _drawWholeMap: function () {
@@ -176,7 +181,7 @@ var Item = function (x,y) {
 }
 
 Item.prototype._draw = function () {
-    Game.display.draw(this._x, this._y, "i", "yellow");
+    Game.display.draw(this._x, this._y, "$", "yellow");
 }
 
 $(document).ready(function(e) {   

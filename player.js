@@ -47,9 +47,9 @@ Player.prototype.handleEvent = function (e) {
     if (!(newKey in Game.map)) { return; }
 
     var tile = Game.map[newKey];
-    if (tile == "i")
+    if (tile == "$")
     {
-        $("#gameSubText").text("Item found");
+        $("#gameSubText").text("Gold found");
     }
     else if (tile == "P")
     {
@@ -79,8 +79,8 @@ Player.prototype._checkBox = function () {
     var key = this._x + "," + this._y;
     var element = Game.map[key] 
     //console.log(Game.map[key]); 
-    if (Game.map[key] != "d" && Game.map[key] != "i" ) {
-        alert("There is no box here!");
+    if (Game.map[key] != ">" && Game.map[key] != "$" ) {
+        $("#gameSubText").text("There is nothing here");
     } 
     else if (key == Game.door ) {//&& Game.song.getAnswer()==Game.answer
         $("#gameText").show();
@@ -120,10 +120,10 @@ Player.prototype._checkBox = function () {
 
         
         //window.removeEventListener("keydown", this);
-    } else if (Game.map[key] == "i")
+    } else if (Game.map[key] == "$")
     {
         Game.engine.lock();
-        $("#gameSubText").text("Item picked up");
+        $("#gameSubText").text("Gold picked up");
         Game.itemCount ++;
         Game.levelItemCount++;
         Game.map[key] = ".";
@@ -156,7 +156,7 @@ function callBack(value){
             Game.level++;
             levelGuesses++;
             $("#gameText").toggle();
-            $("#gameSubText").text("Welcome to level " + Game.level + "total Item Count " + Game.levelItemCount);
+            $("#gameSubText").text("Correct Answer ... Welcome to level " + Game.level + " total collected is " + Game.levelItemCount + " gold");
             Game.engine.lock();
             Game._startLevel();
         }

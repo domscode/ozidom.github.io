@@ -27,12 +27,16 @@ Monster.prototype.act = function () {
          $("#gameSubText").text("You've been captured the game is over - Refresh your browser to restart");
          Game.isGameOver = true;
     } else {
+
         x = path[0][0];
         y = path[0][1];
-        Game.display.draw(this._x, this._y, Game.map[this._x + "," + this._y]);
-        this._x = x;
-        this._y = y;
-        this._draw();
+        if (Game.map[this._x + "," + this._y]!="M")
+        {
+            Game.display.draw(this._x, this._y, Game.map[this._x + "," + this._y]);
+            this._x = x;
+            this._y = y;
+            this._draw();
+        }
     }
 }
 

@@ -28,7 +28,8 @@ song.prototype.getSong = function (level) {
 	switch(level) {
     case 1:
 		    SongTextHTML = "<div style='font-size:small;font-family:courier;'>Open t<b>h</b>e door<br/>and look in<br/>and walk around<br/>you found<br/><br/>Walking ahead<br/>turning left<br/>see what you can find<br/>Remind<br/><br/>Open the door<br/>to my heart and you<br/><br/>will rise<br/>slowly<br/><br/>"+
-			"Open the door<br/>to my heart and<br/>you will rise<br/>slowly<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>"+
+			"Open the door<br/>to my heart and<br/>you will rise<br/>slowly" +
+			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe><div>"+
 		    "<br><b> Riddle: </b>asking the question, on the first line, at the middle of the middle";
         break;
     case 2:
@@ -45,7 +46,9 @@ song.prototype.getSong = function (level) {
 			"shines above you<br/>" + 
 			"and the light that shines<br/> " + 
 			"shines above you<br/>" + 
-			"deep underground<br/><br><b> Riddle: </b>before the tears</div>";
+			"deep underground<br/>"+
+			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe></div>" +
+			"<br><b> Riddle: </b>before the tears";
         break;
      case 3:
         	SongTextHTML = 
@@ -64,7 +67,9 @@ song.prototype.getSong = function (level) {
 			"What can I do<br/>" +  
 			"What can I say <br/>" + 
 			"What can I do<br/>" + 
-			"to undo<br/><br><b> Riddle: </b>the last time you know, find the last, then head north along the edge, till you reach the mine</div>" 
+			"to undo<br/><br>" +
+			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe></div>" +
+			"<b> Riddle: </b>the last time you know, find the last, then head north along the edge, till you reach the mine" 
         break;
     default:
         	SongTextHTML = "";
