@@ -45,10 +45,8 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameIntroText").html("Bards who enter have 3 levels to go</br>"+
-                                "Careful you must be for Monsters know<br>" +
-                                "Careful you must be for Monsters know<br>" +
-                                "The deeper you go the harder it gets<br>");
+        $("#gameIntroText").html("Every great architect is - necessarily - a great poet.</br>"+
+        "Frank Lloyd Wright<br>");
         this._startLevel();
 
 
