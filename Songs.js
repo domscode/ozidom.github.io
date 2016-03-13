@@ -64,7 +64,7 @@ song.prototype.getSong = function (level) {
 			"shines above you<br/>" + 
 			"deep underground<br/>"+
 			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src=''></iframe>" +
-			"<br><b> Riddle: </b>before the tears</div>";
+			"<br><b> Riddle: </b>before the tears<br/>";
         break;
      case 3:
         	SongTextHTML = 

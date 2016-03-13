@@ -45,8 +45,8 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameIntroText").html("Every great architect is - necessarily - a great poet.</br>"+
-        "Frank Lloyd Wright<br>");
+        $("#gameIntroText").html("'Every great architect is - necessarily - a great poet.'</br>"+
+        "Frank Lloyd Wright<br><br>Hit an arrow key (or WASD) to start...<br>");
         this._startLevel();
 
 
