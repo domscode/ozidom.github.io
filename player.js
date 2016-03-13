@@ -14,7 +14,7 @@ Player.prototype.act = function () {
 }
 
 Player.prototype.handleEvent = function (e) {
-    console.log('KD');
+    console.log('KD'+e.keyCode);
     $("#gameIntroText").text('');
     if (Game.isGameOver)
     {
@@ -25,7 +25,7 @@ Player.prototype.handleEvent = function (e) {
         this._checkBox();
         return;
     }
-
+    //87836568
     var keyMap = {};
     keyMap[38] = 0;
     keyMap[33] = 1;
@@ -37,12 +37,43 @@ Player.prototype.handleEvent = function (e) {
     keyMap[36] = 7;
 
     /* one of numpad directions? */
-    if (!(code in keyMap)) { return; }
+   
 
     /* is there a free space? */
-    var dir = ROT.DIRS[8][keyMap[code]];
-    var newX = this._x + dir[0];
-    var newY = this._y + dir[1];
+    //is this a wasd key
+    var dir,newX,newY;
+    if (e.keyCode ==  87 || e.keyCode ==  83 || e.keyCode ==  65 || e.keyCode ==  68) 
+    {
+        switch (e.keyCode)
+        {
+            case 87:
+                newY = this._y-1;
+                newX = this._x;
+                break;
+            case 83:
+                newY = this._y+1;
+                newX = this._x;
+                break;
+            case 65:
+                newX = this._x-1;
+                newY = this._y; 
+                break;       
+            case 68:
+                newY = this._y;
+                newX = this._x+1;
+            break;
+        }
+    }
+    else
+    {
+     if (!(code in keyMap)) { return; }
+
+      dir = ROT.DIRS[8][keyMap[code]];
+      newX = this._x + dir[0];
+      newY = this._y + dir[1];
+    }
+
+    
     var newKey = newX + "," + newY;
     if (!(newKey in Game.map)) { return; }
 
@@ -53,9 +84,13 @@ Player.prototype.handleEvent = function (e) {
     }
     else if (tile == "P")
     {
-        $("#gameSubText").text("You've been captured, game over, refresh the browser to begin");
+        $("#gameSubText").text("You've been captured, game over, refresh the browser to restart");
         Game.isGameOver = true;
         Game.engine.lock();
+    }
+        else if (tile == ">")
+    {
+        $("#gameSubText").text("Stairs going down (hit spacebar to attempt to solve the riddle)");
     }
     else
     {

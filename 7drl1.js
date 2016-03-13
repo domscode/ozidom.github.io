@@ -45,15 +45,10 @@ var Game = {
         this.song = null;
         //this.level: 0,
         //answer: null,
-        $("#gameIntroText").html("<br>Bards long ago created this dungeon<br>"+
-                                "Open doors by solving riddles/songs - open the door on lv3 to win<br/>."+
-                                "Avoid the monsters who will chase you<br>"+
-                                "<br>"+
-                                "<b>Solve the riddles by looking for letters in bold and"+
-                                 "find a word (sometimes hidden) from hint letter<br>"+
-                                "<br>Beware you only have 3 guesses<br>"+
-                                "<br>Controls:Arrow Keys move and Spacebar for do something");
-
+        $("#gameIntroText").html("Bards who enter have 3 levels to go</br>"+
+                                "Careful you must be for Monsters know<br>" +
+                                "Careful you must be for Monsters know<br>" +
+                                "The deeper you go the harder it gets<br>");
         this._startLevel();
 
 

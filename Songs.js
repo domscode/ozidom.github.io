@@ -47,8 +47,8 @@ song.prototype.getSong = function (level) {
 			"and the light that shines<br/> " + 
 			"shines above you<br/>" + 
 			"deep underground<br/>"+
-			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe></div>" +
-			"<br><b> Riddle: </b>before the tears";
+			"<iframe width='100%' height='100' scrolling='no' frameborder='no' src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/250630225&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true'></iframe>" +
+			"<br><b> Riddle: </b>before the tears</div>";
         break;
      case 3:
         	SongTextHTML = 
