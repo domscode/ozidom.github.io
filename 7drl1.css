@@ -76,3 +76,28 @@
     word-wrap:normal;
     width: 50%;
 }
+.subTextComments
+{
+    color: white;
+    font-family: Courier;
+    width: 50%;
+}
+.commentsTextArea
+{
+    width: 700px;
+    height: 200px;
+}
+.commentsEmail
+{
+    width: 700px;
+}
+.commentsButton
+{
+    font-family: Courier;
+}
+a
+{
+    color: green;
+    font-family: Courier;
+}
+}
