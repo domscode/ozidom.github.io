@@ -31,7 +31,7 @@ var Game = {
             ab.appendChild(this.display.getContainer());
             this.level = 1;
         }
-
+        this.isGameOver = false;
         //this.display.clear();
         //this.player = null;
         //this.display = null;
@@ -53,6 +53,7 @@ var Game = {
     },
 
     _startLevel: function () {
+        this.isGameOver = false;
         this.map = {};
         $("#gameText").toggle();
         levelGuesses = 0;
