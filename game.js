@@ -10,6 +10,7 @@ var Game = {
     items: [],
     door: null,
     song: null,
+    isInCombat: false,
     level: 0,
     answer: null,
     isGameOver : false,
@@ -32,6 +33,7 @@ var Game = {
             this.level = 1;
         }
         this.isGameOver = false;
+        this.isInCombat = false;
         //this.display.clear();
         //this.player = null;
         //this.display = null;
@@ -59,6 +61,7 @@ var Game = {
         levelGuesses = 0;
         this.display.clear();
         this.levelItemCount = 0;
+        this.isInCombat = false;
         this._generateMap();   
        
         var scheduler = new ROT.Scheduler.Simple();

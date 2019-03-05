@@ -2,6 +2,8 @@ var Player = function (x, y) {
     this._x = x;
     this._y = y;
     this._draw();
+    this._hits = 10;
+    this._AC = 10;
 }
 
 Player.prototype.getSpeed = function () { return 100; }
@@ -66,6 +68,33 @@ Player.prototype.handleEvent = function (e) {
     }
     else
     {
+        if (e.keyCode ==  74 || e.keyCode ==  75 || e.keyCode ==  76 || e.keyCode ==  73) 
+        {
+            if (isInCombat == false)
+            {
+                $("#gameSubText").text(e.keyCode + "not valid outside of combat"); 
+                return;
+            }
+            else
+            {
+                switch (e.keyCode)
+                {
+                    case 74:
+                        $("#gameSubText").text(e.keyCode + " attacking"); 
+                        break;
+                    case 75:
+                        $("#gameSubText").text(e.keyCode + " hiding"); 
+                        break;
+                    case 76:
+                        $("#gameSubText").text(e.keyCode + " helping"); 
+                        break;       
+                    case 77:
+                        $("#gameSubText").text(e.keyCode + " parry"); 
+                    break;
+                }
+            }
+        }
+     //$("#gameSubText").text(e.keyCode + "pressed");  
      if (!(code in keyMap)) { return; }
 
       dir = ROT.DIRS[8][keyMap[code]];
@@ -84,9 +113,9 @@ Player.prototype.handleEvent = function (e) {
     }
     else if (tile == "P")
     {
-        $("#gameSubText").text("You've been captured, game over, refresh the browser to restart");
-        Game.isGameOver = true;
-        Game.engine.lock();
+        $("#gameSubText").text("You've damaged monster");
+        //Game.isGameOver = true;
+        //Game.engine.lock();
     }
         else if (tile == ">")
     {

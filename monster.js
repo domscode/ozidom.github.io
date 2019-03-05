@@ -24,8 +24,11 @@ Monster.prototype.act = function () {
     path.shift();
     if (path.length <= 1) {
         Game.engine.lock();
-         $("#gameSubText").text("You've been captured the game is over - Refresh your browser to restart");
-         Game.isGameOver = true;
+         //$("#gameSubText").text("You've been damaged");
+         Game.isInCombat = true;
+         //handle combat
+
+         //Game.isGameOver = true;
     } else {
 
         x = path[0][0];
